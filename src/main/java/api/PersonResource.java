@@ -7,34 +7,19 @@ import model.PersonDb;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import java.util.ArrayList;
+import java.util.List;
 
 @RequestScoped
 @Path("/persons")
 public class PersonResource {
 
     @GET
-    public String getPersons(){
+    @Produces({MediaType.APPLICATION_JSON,})
+    public List<Person> getPersons() {
+        return new ArrayList<>(PersonDb.getPersons().values());
 
-        StringBuilder sb = new StringBuilder();
-
-        sb.append("<html>");
-        for (Person p:PersonDb.getPersons().values()){
-
-            sb.append("<p>");
-            sb.append(p.getId());
-            sb.append(" ");
-            sb.append(p.getName());
-            sb.append(" ");
-            sb.append(p.getSurname());
-            sb.append(" ");
-            sb.append("</p>");
-
-
-        }
-        sb.append("</html>");
-
-
-        return sb.toString();
     }
-
 }
