@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="REST-glimps" target="7" />
+      <module name="REST-glimps" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
