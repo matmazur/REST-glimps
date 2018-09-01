@@ -7,6 +7,7 @@ import model.PersonDb;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.util.Map;
@@ -17,8 +18,16 @@ public class PersonResource {
 
     @GET
     @Produces({MediaType.APPLICATION_JSON,})
-    public Map<Long,Person> getPersons() {
+    public Map<Long, Person> getPersons() {
         return PersonDb.getPersons();
+
+    }
+
+    @GET
+    @Path("{id}")
+    @Produces({MediaType.APPLICATION_JSON,})
+    public Person getPersons(@PathParam("id") Long id) {
+        return PersonDb.getPersons().get(id);
 
     }
 }
